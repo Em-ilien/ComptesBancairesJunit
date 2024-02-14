@@ -1,4 +1,4 @@
-package fr.em_ilien.bankaccount;
+package fr.em_ilien.bankaccount.compte;
 
 import fr.em_ilien.bankaccount.exceptions.DebitMaximalAutoriseAtteintException;
 import fr.em_ilien.bankaccount.exceptions.DecouvertMaximalAutoriseAtteintException;
@@ -9,12 +9,14 @@ import fr.em_ilien.bankaccount.exceptions.ValeurPositiveRequiseException;
  * L'unicité n'est pas gérée par ce programme.
  */
 public abstract class Compte {
+	public static final double DEFAULT_DECOUVERT_MAX_AUTORIZED = 800;
+	public static final double DEFAULT_DEBIT_MAX_AUTORIZED = 1000;
 
-	private int id;
-	private Personne titulaire;
-	private double solde;
-	private double decouvertMaximalAutorise;
-	private double debitMaximalAutorise;
+	protected int id;
+	protected Personne titulaire;
+	protected double solde;
+	protected double decouvertMaximalAutorise;
+	protected double debitMaximalAutorise;
 
 	/**
 	 * Crée un nouveau compte avec un solde initial nul, un découvert maximal
@@ -25,7 +27,7 @@ public abstract class Compte {
 	 * @throws ValeurPositiveRequiseException si l'id est négatif.
 	 */
 	public Compte(int id, Personne titulaire) throws ValeurPositiveRequiseException {
-		// TODO
+		this(id, titulaire, 0);
 	}
 
 	/**
@@ -39,7 +41,7 @@ public abstract class Compte {
 	 *                                        négative.
 	 */
 	public Compte(int id, Personne titulaire, double soldeInitial) throws ValeurPositiveRequiseException {
-		// TODO
+		this(id, titulaire, soldeInitial, null, null);
 	}
 
 	/**
@@ -63,7 +65,19 @@ public abstract class Compte {
 	 */
 	public Compte(int id, Personne titulaire, double soldeInitial, Double decouvertMaximalAutorise,
 			Double debitMaximalAutorise) throws ValeurPositiveRequiseException {
-		// TODO
+		if (decouvertMaximalAutorise == null)
+			decouvertMaximalAutorise = Compte.DEFAULT_DECOUVERT_MAX_AUTORIZED;
+		if (debitMaximalAutorise == null)
+			debitMaximalAutorise = Compte.DEFAULT_DEBIT_MAX_AUTORIZED;
+
+		this.id = id;
+		this.titulaire = titulaire;
+		if (soldeInitial < 0 || decouvertMaximalAutorise < 0 || debitMaximalAutorise < 0)
+			throw new ValeurPositiveRequiseException(
+					"Le solde initial, le découvert maximal autorisé et le débit maximal autorisé doivent être positifs.");
+		this.solde = soldeInitial;
+		this.decouvertMaximalAutorise = decouvertMaximalAutorise;
+		this.debitMaximalAutorise = debitMaximalAutorise;
 	}
 
 	/**
@@ -93,9 +107,6 @@ public abstract class Compte {
 	public abstract void crediterSolde(double montant) throws ValeurPositiveRequiseException;
 
 	/**
-	 */
-
-	/**
 	 * Débite le montant au solde du compte
 	 * 
 	 * @param montant Nombre décimal positif en euros.
@@ -110,6 +121,7 @@ public abstract class Compte {
 			DebitMaximalAutoriseAtteintException, ValeurPositiveRequiseException;
 
 	/**
+	 * Virer de l'argent du compte courant à un autre
 	 * 
 	 * @param compteDebite  le compte qui sera débité
 	 * @param compteCredite le compte à créditer
@@ -121,7 +133,7 @@ public abstract class Compte {
 	 *                                                  est dépassé
 	 * @throws ValeurPositiveRequiseException           si le montant est négatif.
 	 */
-	public abstract void executerVirement(Compte compteDebite, Compte compteCredite, double montant)
+	public abstract void executerVirement(Compte compteCredite, double montant)
 			throws DecouvertMaximalAutoriseAtteintException, DebitMaximalAutoriseAtteintException,
 			ValeurPositiveRequiseException;
 
