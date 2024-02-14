@@ -8,7 +8,19 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import fr.em_ilien.bankaccount.compte.Compte;
+import fr.em_ilien.bankaccount.compte.CompteImpl;
+import fr.em_ilien.bankaccount.compte.Personne;
+import fr.em_ilien.bankaccount.compte.PersonneImpl;
+import fr.em_ilien.bankaccount.compte.adresse.AdresseCloneur;
+import fr.em_ilien.bankaccount.compte.adresse.AdresseImpl;
+import fr.em_ilien.bankaccount.exceptions.ValeurPositiveRequiseException;
+
 class PersonneTest {
+	private static int accountId = 0;
+
+	private Personne titulaire;
+	private Compte compte;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -20,6 +32,11 @@ class PersonneTest {
 
 	@BeforeEach
 	void setUp() throws Exception {
+		accountId++;
+
+		titulaire = new PersonneImpl("Cosson", "Emilien", new AdresseImpl("52", "rue",
+				"des Docteurs Calmette et Guérin", "I.U.T. de Laval", "", "Laval", "53000", "France"));
+		compte = null;
 	}
 
 	@AfterEach
@@ -27,28 +44,25 @@ class PersonneTest {
 	}
 
 	@Test
-	void testPersonne() {
-		// TODO
+	void testChangePersonAddress() throws ValeurPositiveRequiseException {
+		// Given
+		final String paris = "Paris";
+		compte = new CompteImpl(accountId, titulaire);
+		// When
+		AdresseCloneur adresseCloneur = new AdresseCloneur(compte.titulaire().adresse());
+		adresseCloneur.commune = paris;
+		compte.titulaire().changerAdresse(adresseCloneur.construire());
+		// Then
+		assertEquals(paris, compte.titulaire().adresse().commune());
 	}
 
 	@Test
-	void testNom() {
-		// TODO
-	}
-
-	@Test
-	void testPrenom() {
-		// TODO
-	}
-
-	@Test
-	void testAdresse() {
-		// TODO
-	}
-
-	@Test
-	void testChangerAdresse() {
-		// TODO
+	void testPersonneNomEtPrenomCorrects() throws ValeurPositiveRequiseException {
+		// When
+		compte = new CompteImpl(accountId, titulaire);
+		// Then
+		assertEquals("Cosson", compte.titulaire().nom());
+		assertEquals("Emilien", compte.titulaire().prenom());
 	}
 
 }
