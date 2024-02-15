@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CompteImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">fr.em_ilien.bankaccount.compte</a> &gt; <span class="el_source">CompteImpl.java</span></div><h1>CompteImpl.java</h1><pre class="source lang-java linenums">package fr.em_ilien.bankaccount.compte;
+
+import fr.em_ilien.bankaccount.exceptions.CompteSansTitulaireException;
+import fr.em_ilien.bankaccount.exceptions.DebitMaximalAutoriseAtteintException;
+import fr.em_ilien.bankaccount.exceptions.DecouvertMaximalAutoriseAtteintException;
+import fr.em_ilien.bankaccount.exceptions.ValeurPositiveRequiseException;
+import fr.em_ilien.bankaccount.personne.Personne;
+
+public class CompteImpl implements Compte {
+	private int id;
+	private Personne titulaire;
+	private double solde;
+	private double decouvertMaximalAutorise;
+	private double debitMaximalAutorise;
+
+	/**
+	 * CrÃ©e un nouveau compte avec un solde initial nul, un dÃ©couvert maximal
+	 * autorisÃ© de 800 â‚¬ et un dÃ©bit maximal autorisÃ© de 1 000 â‚¬
+	 * 
+	 * @param id        numÃ©ro du compte. Doit Ãªtre unique.
+	 * @param titulaire personne qui dÃ©tient le compte
+	 * @throws ValeurPositiveRequiseException si l'id est nÃ©gatif.
+	 * @throws CompteSansTitulaireException   si le titulaire est null
+	 */
+	public CompteImpl(int id, Personne titulaire) throws ValeurPositiveRequiseException, CompteSansTitulaireException {
+<span class="fc" id="L26">		this(id, titulaire, 0);</span>
+<span class="fc" id="L27">	}</span>
+
+	/**
+	 * CrÃ©e un nouveau compte en dÃ©posant un montant initial
+	 * 
+	 * @param id           numÃ©ro du compte. Doit Ãªtre unique et positif.
+	 * @param titulaire    personne qui dÃ©tient le compte
+	 * @param soldeInitial montant du dÃ©pÃ´t initial. Peut Ãªtre nul ou positif.
+	 * @throws ValeurPositiveRequiseException si l'un des paramÃ¨tres fournis qui
+	 *                                        attend une valeur positive est
+	 *                                        nÃ©gative.
+	 * @throws CompteSansTitulaireException   si le titulaire est null
+	 */
+	public CompteImpl(int id, Personne titulaire, double soldeInitial)
+			throws ValeurPositiveRequiseException, CompteSansTitulaireException {
+<span class="fc" id="L42">		this(id, titulaire, soldeInitial, null, null);</span>
+<span class="fc" id="L43">	}</span>
+
+	/**
+	 * CrÃ©e un nouveau compte en rÃ©glant les paramÃ¨tres de dÃ©bit maximal autorisÃ© et
+	 * de dÃ©couvert maximal autorisÃ©
+	 * 
+	 * @param id                       numÃ©ro du compte. Doit Ãªtre unique et
+	 *                                 positif.
+	 * @param titulaire                personne qui dÃ©tient le compte
+	 * @param soldeInitial             montant du dÃ©pÃ´t initial. Peut Ãªtre nul ou
+	 *                                 positif.
+	 * @param decouvertMaximalAutorise montant maximal de dÃ©couvert autorisÃ©. Nombre
+	 *                                 positif. Passer null pour laisser la valeur
+	 *                                 par dÃ©faut (800 â‚¬).
+	 * @param debitMaximalAutorise     montant maximal de dÃ©bit autorisÃ©. Nombre
+	 *                                 positif. Passer null pour laisser la valeur
+	 *                                 par dÃ©faut (1 000 â‚¬).
+	 * @throws ValeurPositiveRequiseException si l'un des paramÃ¨tres fournis qui
+	 *                                        attend une valeur positive est
+	 *                                        nÃ©gative.
+	 * @throws CompteSansTitulaireException   si le titulaire est null
+	 */
+	public CompteImpl(int id, Personne titulaire, double soldeInitial, Double decouvertMaximalAutorise,
+<span class="fc" id="L66">			Double debitMaximalAutorise) throws ValeurPositiveRequiseException, CompteSansTitulaireException {</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">		if (decouvertMaximalAutorise == null)</span>
+<span class="fc" id="L68">			decouvertMaximalAutorise = Compte.DEFAULT_DECOUVERT_MAX_AUTORIZED;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">		if (debitMaximalAutorise == null)</span>
+<span class="fc" id="L70">			debitMaximalAutorise = Compte.DEFAULT_DEBIT_MAX_AUTORIZED;</span>
+
+<span class="fc bfc" id="L72" title="All 2 branches covered.">		if (id &lt; 0)</span>
+<span class="fc" id="L73">			throw new ValeurPositiveRequiseException(&quot;L'id du compte doit Ãªtre positive.&quot;);</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">		if (soldeInitial &lt; 0)</span>
+<span class="fc" id="L75">			throw new ValeurPositiveRequiseException(&quot;Le solde initial doit Ãªtre positif.&quot;);</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">		if (decouvertMaximalAutorise &lt; 0)</span>
+<span class="fc" id="L77">			throw new ValeurPositiveRequiseException(&quot;Le dÃ©couvert maximal autorisÃ© doit Ãªtre positif.&quot;);</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">		if (debitMaximalAutorise &lt; 0)</span>
+<span class="fc" id="L79">			throw new ValeurPositiveRequiseException(&quot;Le dÃ©bit maximal autorisÃ© doit Ãªtre positif.&quot;);</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">		if (titulaire == null)</span>
+<span class="fc" id="L81">			throw new CompteSansTitulaireException(&quot;Un compte doit avoir un titulaire.&quot;);</span>
+
+<span class="fc" id="L83">		this.id = id;</span>
+<span class="fc" id="L84">		this.titulaire = titulaire;</span>
+<span class="fc" id="L85">		this.solde = soldeInitial;</span>
+<span class="fc" id="L86">		this.decouvertMaximalAutorise = decouvertMaximalAutorise;</span>
+<span class="fc" id="L87">		this.debitMaximalAutorise = debitMaximalAutorise;</span>
+<span class="fc" id="L88">	}</span>
+
+	public void changerDecouvertMaximalAutorise(Double montant) throws ValeurPositiveRequiseException {
+<span class="fc bfc" id="L91" title="All 2 branches covered.">		if (montant &lt; 0)</span>
+<span class="fc" id="L92">			throw new ValeurPositiveRequiseException(&quot;Le montant du dÃ©couvert maximal autorisÃ© doit Ãªtre positif.&quot;);</span>
+<span class="fc" id="L93">		this.decouvertMaximalAutorise = montant;</span>
+<span class="fc" id="L94">	}</span>
+
+	public void changerDebitMaximalAutorise(Double montant) throws ValeurPositiveRequiseException {
+<span class="fc bfc" id="L97" title="All 2 branches covered.">		if (montant &lt; 0)</span>
+<span class="fc" id="L98">			throw new ValeurPositiveRequiseException(&quot;Le montant du dÃ©bit maximal autorisÃ© doit Ãªtre positif.&quot;);</span>
+<span class="fc" id="L99">		this.debitMaximalAutorise = montant;</span>
+<span class="fc" id="L100">	}</span>
+
+	public void crediterSolde(double montant) throws ValeurPositiveRequiseException {
+<span class="fc bfc" id="L103" title="All 2 branches covered.">		if (montant &lt; 0)</span>
+<span class="fc" id="L104">			throw new ValeurPositiveRequiseException(&quot;Le montant Ã  crÃ©diter doit Ãªtre positif.&quot;);</span>
+<span class="fc" id="L105">		this.solde += montant;</span>
+<span class="fc" id="L106">	}</span>
+
+	public void debiterSolde(double montant) throws DecouvertMaximalAutoriseAtteintException,
+			DebitMaximalAutoriseAtteintException, ValeurPositiveRequiseException {
+<span class="fc bfc" id="L110" title="All 2 branches covered.">		if (montant &lt; 0)</span>
+<span class="fc" id="L111">			throw new ValeurPositiveRequiseException(&quot;Le montant Ã  dÃ©biter doit Ãªtre positif.&quot;);</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">		if (soldePlusDecouvertAutorise() &lt; montant)</span>
+<span class="fc" id="L113">			throw new DecouvertMaximalAutoriseAtteintException(&quot;Le montant du dÃ©couvert maximal autorisÃ© est dÃ©passÃ©.&quot;);</span>
+<span class="fc bfc" id="L114" title="All 2 branches covered.">		if (montant &gt; this.debitMaximalAutorise)</span>
+<span class="fc" id="L115">			throw new DebitMaximalAutoriseAtteintException(&quot;Le montant du dÃ©bit maximal autorisÃ© est dÃ©passÃ©.&quot;);</span>
+<span class="fc" id="L116">		this.solde -= montant;</span>
+<span class="fc" id="L117">	}</span>
+
+	public void executerVirement(Compte compteCredite, double montant) throws DecouvertMaximalAutoriseAtteintException,
+			DebitMaximalAutoriseAtteintException, ValeurPositiveRequiseException {
+<span class="fc" id="L121">		this.debiterSolde(montant);</span>
+<span class="fc" id="L122">		compteCredite.crediterSolde(montant);</span>
+<span class="fc" id="L123">	}</span>
+
+	public boolean estADecouvert() {
+<span class="fc bfc" id="L126" title="All 2 branches covered.">		return this.solde &lt; 0;</span>
+	}
+
+	public double decouvert() {
+<span class="fc bfc" id="L130" title="All 2 branches covered.">		if (estADecouvert())</span>
+<span class="fc" id="L131">			return Math.abs(this.solde);</span>
+		else
+<span class="fc" id="L133">			return 0;</span>
+	}
+
+	public Personne titulaire() {
+<span class="fc" id="L137">		return titulaire;</span>
+	}
+
+	public int numero() {
+<span class="fc" id="L141">		return id;</span>
+	}
+
+	public double solde() {
+<span class="fc" id="L145">		return solde;</span>
+	}
+
+	public double decouvertMaximalAutorise() {
+<span class="fc" id="L149">		return decouvertMaximalAutorise;</span>
+	}
+
+	public double debitMaximalAutorise() {
+<span class="fc" id="L153">		return debitMaximalAutorise;</span>
+	}
+
+	public double montantMaximumDebitAutorise() {
+<span class="fc" id="L157">		return Math.min(soldePlusDecouvertAutorise(), this.debitMaximalAutorise);</span>
+	}
+
+	private double soldePlusDecouvertAutorise() {
+<span class="fc" id="L161">		return this.solde + this.decouvertMaximalAutorise;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

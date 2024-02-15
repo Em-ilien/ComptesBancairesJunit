@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PersonneImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">fr.em_ilien.bankaccount.personne</a> &gt; <span class="el_source">PersonneImpl.java</span></div><h1>PersonneImpl.java</h1><pre class="source lang-java linenums">package fr.em_ilien.bankaccount.personne;
+
+import fr.em_ilien.bankaccount.adresse.Adresse;
+
+public class PersonneImpl implements Personne {
+	private String nom;
+	private String prenom;
+	private Adresse adresse;
+
+	/**
+	 * CrÃ©er une personne
+	 * 
+	 * @param nom     le nom de famille
+	 * @param prenom  le prÃ©nom
+	 * @param adresse l'adresse postale
+	 */
+<span class="fc" id="L17">	public PersonneImpl(String nom, String prenom, Adresse adresse) {</span>
+<span class="fc" id="L18">		this.nom = nom;</span>
+<span class="fc" id="L19">		this.prenom = prenom;</span>
+<span class="fc" id="L20">		this.adresse = adresse;</span>
+<span class="fc" id="L21">	}</span>
+
+	/**
+	 * @return le nom de famille de la personne
+	 */
+	public String nom() {
+<span class="fc" id="L27">		return nom;</span>
+	}
+	/**
+	 * @return le prÃ©nom de la personne
+	 */
+	public String prenom() {
+<span class="fc" id="L33">		return prenom;</span>
+	}
+
+	/**
+	 * @return l'adresse de la personne
+	 */
+	public Adresse adresse() {
+<span class="fc" id="L40">		return adresse;</span>
+	}
+
+	/**
+	 * Changer l'adresse de la personne
+	 *
+	 * @param nouvelleAdresse
+	 */
+	@Override
+	public void changerAdresse(Adresse nouvelleAdresse) {
+<span class="fc" id="L50">		this.adresse = nouvelleAdresse;</span>
+<span class="fc" id="L51">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

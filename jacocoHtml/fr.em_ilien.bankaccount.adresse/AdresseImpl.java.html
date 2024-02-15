@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdresseImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">fr.em_ilien.bankaccount.adresse</a> &gt; <span class="el_source">AdresseImpl.java</span></div><h1>AdresseImpl.java</h1><pre class="source lang-java linenums">package fr.em_ilien.bankaccount.adresse;
+
+public class AdresseImpl implements Adresse {
+	private String numeroDeVoie;
+	private String typeDeVoie;
+	private String nomDeVoie;
+	private String batiment;
+	private String lieuDit;
+	private String commune;
+	private String codePostal;
+	private String pays;
+
+	/**
+	 * CrÃ©er une nouvelle adresse
+	 * 
+	 * @param numeroDeVoie ex. &quot;55&quot;
+	 * @param typeDeVoie   ex. &quot;rue&quot;
+	 * @param nomDeVoie    ex. &quot;du Faubourd St HonorÃ©&quot;
+	 * @param batiment     ex. null
+	 * @param lieuDit      ex. null
+	 * @param commune      ex. &quot;Paris&quot;
+	 * @param codePostal   ex. &quot;75000&quot;
+	 * @param pays         ex. &quot;France&quot;
+	 */
+	public AdresseImpl(String numeroDeVoie, String typeDeVoie, String nomDeVoie, String batiment, String lieuDit,
+<span class="fc" id="L26">			String commune, String codePostal, String pays) {</span>
+<span class="fc" id="L27">		this.numeroDeVoie = numeroDeVoie;</span>
+<span class="fc" id="L28">		this.typeDeVoie = typeDeVoie;</span>
+<span class="fc" id="L29">		this.nomDeVoie = nomDeVoie;</span>
+<span class="fc" id="L30">		this.batiment = batiment;</span>
+<span class="fc" id="L31">		this.lieuDit = lieuDit;</span>
+<span class="fc" id="L32">		this.commune = commune;</span>
+<span class="fc" id="L33">		this.codePostal = codePostal;</span>
+<span class="fc" id="L34">		this.pays = pays;</span>
+<span class="fc" id="L35">	}</span>
+
+	public String numeroDeVoie() {
+<span class="fc" id="L38">		return numeroDeVoie;</span>
+	}
+
+	public String typeDeVoie() {
+<span class="fc" id="L42">		return typeDeVoie;</span>
+	}
+
+	public String nomDeVoie() {
+<span class="fc" id="L46">		return nomDeVoie;</span>
+	}
+
+	public String batiment() {
+<span class="fc" id="L50">		return batiment;</span>
+	}
+
+	public String lieuDit() {
+<span class="fc" id="L54">		return lieuDit;</span>
+	}
+
+	public String commune() {
+<span class="fc" id="L58">		return commune;</span>
+	}
+
+	public String codePostal() {
+<span class="fc" id="L62">		return codePostal;</span>
+	}
+
+	public String pays() {
+<span class="fc" id="L66">		return pays;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

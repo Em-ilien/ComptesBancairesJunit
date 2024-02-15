@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdresseCloneur.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">app</a> &gt; <a href="index.source.html" class="el_package">fr.em_ilien.bankaccount.adresse</a> &gt; <span class="el_source">AdresseCloneur.java</span></div><h1>AdresseCloneur.java</h1><pre class="source lang-java linenums">package fr.em_ilien.bankaccount.adresse;
+
+/**
+ * Permet de cloner une adresse pour en crÃ©er une nouvelle.
+ */
+public class AdresseCloneur {
+
+	/**
+	 * Initialiser les propriÃ©tÃ©s du cloneur avec celles de l'ancienne adresse
+	 * 
+	 * @param ancienneAdresse
+	 */
+<span class="fc" id="L13">	public AdresseCloneur(Adresse ancienneAdresse) {</span>
+<span class="fc" id="L14">		this.numeroDeVoie = ancienneAdresse.numeroDeVoie();</span>
+<span class="fc" id="L15">		this.typeDeVoie = ancienneAdresse.typeDeVoie();</span>
+<span class="fc" id="L16">		this.nomDeVoie = ancienneAdresse.nomDeVoie();</span>
+<span class="fc" id="L17">		this.batiment = ancienneAdresse.batiment();</span>
+<span class="fc" id="L18">		this.lieuDit = ancienneAdresse.lieuDit();</span>
+<span class="fc" id="L19">		this.commune = ancienneAdresse.commune();</span>
+<span class="fc" id="L20">		this.codePostal = ancienneAdresse.codePostal();</span>
+<span class="fc" id="L21">		this.pays = ancienneAdresse.pays();</span>
+<span class="fc" id="L22">	}</span>
+
+	/**
+	 * Construit l'adresse
+	 * 
+	 * @return l'adresse obtenue Ã  partir des propriÃ©tÃ©s
+	 */
+	public Adresse construire() {
+<span class="fc" id="L30">		return new AdresseImpl(numeroDeVoie, typeDeVoie, nomDeVoie, batiment, lieuDit, commune, codePostal, pays);</span>
+	}
+
+	/**
+	 * ex. &quot;55&quot;
+	 */
+	public String numeroDeVoie;
+	/**
+	 * ex. &quot;rue&quot;
+	 */
+	public String typeDeVoie;
+	/**
+	 * ex. &quot;du Faubourg St HonorÃ©&quot;
+	 */
+	public String nomDeVoie;
+	/**
+	 * ex. null
+	 */
+	public String batiment;
+	/**
+	 * ex. null
+	 */
+	public String lieuDit;
+	/**
+	 * ex. &quot;Paris&quot;
+	 */
+	public String commune;
+	/**
+	 * ex. &quot;75000&quot;
+	 */
+	public String codePostal;
+	/**
+	 * ex. &quot;France&quot;
+	 */
+	public String pays;
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

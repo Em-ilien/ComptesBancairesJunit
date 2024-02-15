@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="fr.em_ilien.bankaccount.CompteTest" tests="32" skipped="0" failures="0" errors="0" timestamp="2024-02-15T10:06:27" hostname="EMILIEN" time="0.502">
+  <properties/>
+  <testcase name="testDebiterPlusQueLaBanqueNautoriseDeDecouvertNeDoitPasMarcher()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.113"/>
+  <testcase name="testDecouvertDeZeroSiCompteNonDecouvert()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.008"/>
+  <testcase name="testNEstPasADecouvert()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.004"/>
+  <testcase name="testRecupererNumeroCompte()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.004"/>
+  <testcase name="testDebiterPlusQueLaLimiteDeDebitLautoriseNeDoitPasMarcher()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.004"/>
+  <testcase name="testOuvrirUnCompteAvecUnMontantDeDecouvertMaximumAutoriseNegatifNeDoitPasMarcher()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.003"/>
+  <testcase name="testChangerDebitMaximalAutorise()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.001"/>
+  <testcase name="testMontantMaximumDebitAutorisePersonnalise()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.002"/>
+  <testcase name="testDebiterMontantNegatifNeDoitPasMarcher()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.002"/>
+  <testcase name="testCrediterSolde()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.003"/>
+  <testcase name="testMontantMaxDecouvertAutoriseParDefautEstDeHuitCentEuros()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.001"/>
+  <testcase name="testChangerDecouvertMaximalAutorise()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.001"/>
+  <testcase name="testExecuterVirement()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.001"/>
+  <testcase name="testDebiterSolde()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.001"/>
+  <testcase name="testEstADecouvert()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.004"/>
+  <testcase name="testCrediterSoldeMontantNegatifNeDoitPasMarcher()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.003"/>
+  <testcase name="testOuvrirUnCompteAvecUnMontantDeDebitMaximumAutoriseNegatifNeDoitPasMarcher()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.002"/>
+  <testcase name="testChangerDebitMaximalAutoriseMontantNegatifNeDoitPasMarcher()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.002"/>
+  <testcase name="testDecouvert()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.002"/>
+  <testcase name="Solde:0 DebitMax:null DecouvertMax:null, Expected:800" classname="fr.em_ilien.bankaccount.CompteTest" time="0.07"/>
+  <testcase name="Solde:300 DebitMax:null DecouvertMax:null, Expected:1000" classname="fr.em_ilien.bankaccount.CompteTest" time="0.002"/>
+  <testcase name="Solde:0 DebitMax:10 DecouvertMax:null, Expected:10" classname="fr.em_ilien.bankaccount.CompteTest" time="0.002"/>
+  <testcase name="Solde:0 DebitMax:10 DecouvertMax:5, Expected:5" classname="fr.em_ilien.bankaccount.CompteTest" time="0.003"/>
+  <testcase name="testDecouvertZeroSiSoldeEgalZero()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.001"/>
+  <testcase name="testCreerUnCompteAvecIdNegatif()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.002"/>
+  <testcase name="testCreerUnCompteSansTitulaire()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.003"/>
+  <testcase name="testCreerUnCompteAvecDepotInitial()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.001"/>
+  <testcase name="testChangerDecouvertMaximalAutoriseMontantNegatifNeDoitPasMarcher()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.002"/>
+  <testcase name="testOuvrirUnCompteAvecUnSoldeNegatifNeDoitPasMarcher()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.003"/>
+  <testcase name="testCreerUnCompteAvecUnTitulaire()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.002"/>
+  <testcase name="testCreerUnCompteAvecTousLesParametres()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.001"/>
+  <testcase name="testMontantMaxDebitAutoriseParDefautEstDeMilleEuros()" classname="fr.em_ilien.bankaccount.CompteTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
