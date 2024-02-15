@@ -1,5 +1,7 @@
 package fr.em_ilien.bankaccount.adresse;
-
+/**
+ * Représente l'adresse d'une personne. Ne peut pas être modifiée. Peut être clonée par AdresseCloneur.
+ */
 public interface Adresse {
 
 	public abstract String numeroDeVoie();

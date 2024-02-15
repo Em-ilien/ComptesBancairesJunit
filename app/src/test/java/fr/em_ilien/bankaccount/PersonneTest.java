@@ -2,9 +2,6 @@ package fr.em_ilien.bankaccount;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +9,6 @@ import fr.em_ilien.bankaccount.adresse.AdresseCloneur;
 import fr.em_ilien.bankaccount.adresse.AdresseImpl;
 import fr.em_ilien.bankaccount.compte.Compte;
 import fr.em_ilien.bankaccount.compte.CompteImpl;
-import fr.em_ilien.bankaccount.exceptions.ValeurPositiveRequiseException;
 import fr.em_ilien.bankaccount.personne.Personne;
 import fr.em_ilien.bankaccount.personne.PersonneImpl;
 
@@ -32,7 +28,7 @@ class PersonneTest {
 	}
 
 	@Test
-	void testChangePersonAddress() throws Exception {
+	void testChangerAdressePersonne() throws Exception {
 		// Given
 		final String paris = "Paris";
 		compte = new CompteImpl(accountId, titulaire);
@@ -45,7 +41,7 @@ class PersonneTest {
 	}
 
 	@Test
-	void testPersonneNomEtPrenomCorrects() throws Exception {
+	void testNomEtPrenomCorrectsPersonne() throws Exception {
 		// When
 		compte = new CompteImpl(accountId, titulaire);
 		// Then

@@ -20,14 +20,22 @@ public class PersonneImpl implements Personne {
 		this.adresse = adresse;
 	}
 
+	/**
+	 * @return le nom de famille de la personne
+	 */
 	public String nom() {
 		return nom;
 	}
-
+	/**
+	 * @return le prénom de la personne
+	 */
 	public String prenom() {
 		return prenom;
 	}
 
+	/**
+	 * @return l'adresse de la personne
+	 */
 	public Adresse adresse() {
 		return adresse;
 	}

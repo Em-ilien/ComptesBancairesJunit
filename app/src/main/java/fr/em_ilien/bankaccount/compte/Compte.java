@@ -82,20 +82,40 @@ public interface Compte {
 	 */
 	public double decouvert();
 
+	/**
+	 * 
+	 * @return le titulaire du compte
+	 */
 	public Personne titulaire();
 
+	/**
+	 * 
+	 * @return le numéro unique attribué au compte à son ouverture
+	 */
 	public int numero();
 
+	/**
+	 * 
+	 * @return le solde dispobile sur le compte
+	 */
 	public double solde();
 
+	/**
+	 * 
+	 * @return le solde minimum que le compte est autorisé à avoir
+	 */
 	public double decouvertMaximalAutorise();
 
+	/**
+	 * 
+	 * @return le montant maximum qu'il est possible de débiter en un seul débit
+	 */
 	public double debitMaximalAutorise();
 
 	/**
 	 * 
 	 * @return le montant maximum qu'il est actuellement possible de débiter sur le
-	 *         compte, en fonction du solde courant et du débit maximal autorisé.
+	 *         compte, en fonction du solde courant et du découvert maximal autorisé, ainsi que du débit maximal autorisé.
 	 */
 	public double montantMaximumDebitAutorise();
 }
