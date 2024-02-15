@@ -1,31 +1,33 @@
-package fr.em_ilien.bankaccount.compte;
+package fr.em_ilien.bankaccount.personne;
 
-import fr.em_ilien.bankaccount.compte.adresse.Adresse;
+import fr.em_ilien.bankaccount.adresse.Adresse;
 
-public class PersonneImpl extends Personne {
+public class PersonneImpl implements Personne {
+	private String nom;
+	private String prenom;
+	private Adresse adresse;
 
 	/**
 	 * Créer une personne
-	 *
+	 * 
 	 * @param nom     le nom de famille
 	 * @param prenom  le prénom
 	 * @param adresse l'adresse postale
 	 */
 	public PersonneImpl(String nom, String prenom, Adresse adresse) {
-		super(nom, prenom, adresse);
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
 	}
 
-	@Override
 	public String nom() {
 		return nom;
 	}
 
-	@Override
 	public String prenom() {
 		return prenom;
 	}
 
-	@Override
 	public Adresse adresse() {
 		return adresse;
 	}

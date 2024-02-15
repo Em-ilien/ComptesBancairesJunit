@@ -8,13 +8,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import fr.em_ilien.bankaccount.adresse.AdresseCloneur;
+import fr.em_ilien.bankaccount.adresse.AdresseImpl;
 import fr.em_ilien.bankaccount.compte.Compte;
 import fr.em_ilien.bankaccount.compte.CompteImpl;
-import fr.em_ilien.bankaccount.compte.Personne;
-import fr.em_ilien.bankaccount.compte.PersonneImpl;
-import fr.em_ilien.bankaccount.compte.adresse.AdresseCloneur;
-import fr.em_ilien.bankaccount.compte.adresse.AdresseImpl;
 import fr.em_ilien.bankaccount.exceptions.ValeurPositiveRequiseException;
+import fr.em_ilien.bankaccount.personne.Personne;
+import fr.em_ilien.bankaccount.personne.PersonneImpl;
 
 class PersonneTest {
 	private static int accountId = 0;
@@ -22,16 +22,8 @@ class PersonneTest {
 	private Personne titulaire;
 	private Compte compte;
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterAll
-	static void tearDownAfterClass() throws Exception {
-	}
-
 	@BeforeEach
-	void setUp() throws Exception {
+	void initialisation() throws Exception {
 		accountId++;
 
 		titulaire = new PersonneImpl("Cosson", "Emilien", new AdresseImpl("52", "rue",
@@ -39,12 +31,8 @@ class PersonneTest {
 		compte = null;
 	}
 
-	@AfterEach
-	void tearDown() throws Exception {
-	}
-
 	@Test
-	void testChangePersonAddress() throws ValeurPositiveRequiseException {
+	void testChangePersonAddress() throws Exception {
 		// Given
 		final String paris = "Paris";
 		compte = new CompteImpl(accountId, titulaire);
@@ -57,7 +45,7 @@ class PersonneTest {
 	}
 
 	@Test
-	void testPersonneNomEtPrenomCorrects() throws ValeurPositiveRequiseException {
+	void testPersonneNomEtPrenomCorrects() throws Exception {
 		// When
 		compte = new CompteImpl(accountId, titulaire);
 		// Then

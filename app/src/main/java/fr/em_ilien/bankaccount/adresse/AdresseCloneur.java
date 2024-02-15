@@ -1,4 +1,4 @@
-package fr.em_ilien.bankaccount.compte.adresse;
+package fr.em_ilien.bankaccount.adresse;
 
 public class AdresseCloneur {
 	public String numeroDeVoie;
